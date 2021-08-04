@@ -69,7 +69,6 @@ class SleepTrackerFragment : Fragment() {
                 0 -> 3
                 else -> 1
             }
-
         }
         binding.sleepList.layoutManager = manager
 
