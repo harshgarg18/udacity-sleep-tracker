@@ -9,7 +9,8 @@ import com.example.android.trackmysleepquality.database.SleepNight
 import com.example.android.trackmysleepquality.databinding.ListItemSleepNightBinding
 
 
-class SleepNightAdapter : ListAdapter<SleepNight, SleepNightAdapter.ViewHolder>(SleepNightDiffCallback()) {
+class SleepNightAdapter :
+    ListAdapter<SleepNight, SleepNightAdapter.ViewHolder>(SleepNightDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
@@ -20,7 +21,8 @@ class SleepNightAdapter : ListAdapter<SleepNight, SleepNightAdapter.ViewHolder>(
         return ViewHolder.from(parent)
     }
 
-    class ViewHolder private constructor(val binding: ListItemSleepNightBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder private constructor(val binding: ListItemSleepNightBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: SleepNight) {
             binding.sleep = item
@@ -35,15 +37,14 @@ class SleepNightAdapter : ListAdapter<SleepNight, SleepNightAdapter.ViewHolder>(
             }
         }
     }
+}
 
-    class SleepNightDiffCallback: DiffUtil.ItemCallback<SleepNight>() {
-        override fun areItemsTheSame(oldItem: SleepNight, newItem: SleepNight): Boolean {
-            return oldItem.nightId == newItem.nightId
-        }
+class SleepNightDiffCallback : DiffUtil.ItemCallback<SleepNight>() {
+    override fun areItemsTheSame(oldItem: SleepNight, newItem: SleepNight): Boolean {
+        return oldItem.nightId == newItem.nightId
+    }
 
-        override fun areContentsTheSame(oldItem: SleepNight, newItem: SleepNight): Boolean {
-            return oldItem == newItem
-        }
-
+    override fun areContentsTheSame(oldItem: SleepNight, newItem: SleepNight): Boolean {
+        return oldItem == newItem
     }
 }
